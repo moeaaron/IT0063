@@ -1,0 +1,116 @@
+/* CSS Code */
+
+ 
+
+/* style1.css */
+
+ 
+
+ 
+
+#resume_outer_div
+
+{
+
+width: 70%;
+
+height: 70%;
+
+border: solid;
+
+}
+
+#inner_div
+
+{
+
+margin: 10px;
+
+}
+
+#resume
+
+{
+
+font-family: arial;
+
+text-align: center;
+
+}
+
+#objective
+
+{
+
+background-color: silver;
+
+border: solid;
+
+}
+
+#academic_background
+
+{
+
+background-color: silver;
+
+border: solid;
+
+}
+
+#skills
+
+{
+
+background-color: silver;
+
+border: solid;
+
+}
+
+
+
+#skills_bullet {
+      list-style-type: none;
+    }
+
+    #skills_bullet li::before {
+      content: "\003E"; /* Unicode right-pointing double angle quotation mark */
+      margin-right: 8px; /* Adjust as needed */
+    }
+	
+#resume_outer_div {
+      width: 70%;
+      height: 70%;
+      border: solid;
+      margin: 0 auto; /* Center the outer div horizontally */
+    }
+
+    #changeColorButton {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+	
+.myButton {
+	box-shadow: 3px 4px 0px 0px #3e7327;
+	background-color:#77b55a;
+	border-radius:2px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:8px;
+	font-weight:bold;
+	padding:6px 22px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ced9bf;
+}
+.myButton:hover {
+	background-color:#72b352;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
