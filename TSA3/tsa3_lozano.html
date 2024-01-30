@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #6ba5e0; /* Dark Grey Shade */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #34495e; /* Darker Grey Shade */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 320px; /* Reduced height by 20% */
+            width: 230px; /* Reduced width by 40% */
+        }
+
+        .display {
+            font-size: 2em;
+            margin-top: -13px;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: left; /* Align display to the left */
+            background-color: #7f8c8d;
+            color: #ffffff; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            font-size: 1.5em;
+            padding: 10px;
+            text-align: center;
+            border-radius: 50%; /* Circular Buttons */
+            cursor: pointer;
+            border: none; /* Remove Border */
+            position: relative; /* Added for positioning */
+            color: #ecf0f1; /* Text Color */
+            transition: color 0.3s;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        .button::before {
+            content: ''; /* Empty content */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #b3b0b09d; /* Black Oval Color */
+            transition: opacity 0.3s;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .button:hover {
+            color: #FFF; /* Change text color to black on hover */
+        }
+
+        .button:hover::before {
+            opacity: 1; /* Show black oval on hover */
+            background-color: #dfd3d394; /* Black oval color */
+        }
+
+        .button:hover > div { /* Target the text element inside the button */
+            color: #fff; /* Change text color to white on hover */
+        }
+
+        .equal-button {
+            grid-column: span 1;
+            grid-row: span 2;
+            align-self: center; /* Align to the center */
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <div class="button" onclick="appendToDisplay('C')">C</div>
+            <div class="button" onclick="backspace()">&lt;</div>
+            <div class="button" onclick="appendToDisplay('/')">/</div>
+            <div class="button" onclick="appendToDisplay('*')">x</div>
+            <div class="button" onclick="appendToDisplay('7')">7</div>
+            <div class="button" onclick="appendToDisplay('8')">8</div>
+            <div class="button" onclick="appendToDisplay('9')">9</div>
+            <div class="button" onclick="appendToDisplay('-')">-</div>
+            <div class="button" onclick="appendToDisplay('4')">4</div>
+            <div class="button" onclick="appendToDisplay('5')">5</div>
+            <div class="button" onclick="appendToDisplay('6')">6</div>
+            <div class="button" onclick="appendToDisplay('+')">+</div>
+            <div class="button" onclick="appendToDisplay('1')">1</div>
+            <div class="button" onclick="appendToDisplay('2')">2</div>
+            <div class="button" onclick="appendToDisplay('3')">3</div>
+            <div class="button equal-button" onclick="calculate()">=</div>
+            <div class="button" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</div>
+            <div class="button" onclick="appendToDisplay('.')">.</div>
+        </div>
+    </div>
+
+    <script>
+        let displayValue = '0';
+
+        function updateDisplay() {
+            document.getElementById('display').innerText = displayValue;
+        }
+
+        function appendToDisplay(value) {
+            if (value === 'C') {
+                displayValue = '0';
+            } else if (value === '&lt;') {
+                displayValue = displayValue.slice(0, -1);
+            } else {
+                if (displayValue === '0' && value !== '.') {
+                    displayValue = value;
+                } else {
+                    displayValue += value;
+                }
+            }
+            updateDisplay();
+        }
+
+        function backspace() {
+            displayValue = displayValue.slice(0, -1);
+            updateDisplay();
+        }
+
+        function calculate() {
+            try {
+                displayValue = eval(displayValue).toString();
+                updateDisplay();
+            } catch (error) {
+                displayValue = 'Error';
+                updateDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
