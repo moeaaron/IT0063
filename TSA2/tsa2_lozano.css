@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.days-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#animated-box {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-top: 20px;
+    border: 5px solid #3498db;
+    background-color: #f0f0f0; /* Initial greyish color inside the box */
+    transition: all 0.5s ease-in-out;
+}
